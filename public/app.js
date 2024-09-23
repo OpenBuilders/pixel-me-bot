@@ -6,8 +6,8 @@ window.Telegram.WebApp.disableVerticalSwipes();
 
 const BOT_URL = "";
 
-const userId = Telegram.WebApp.initDataUnsafe.user.id;
-const firstName = Telegram.WebApp.initDataUnsafe.user.first_name || "User";
+// const userId = Telegram.WebApp.initDataUnsafe.user.id;
+// const firstName = Telegram.WebApp.initDataUnsafe.user.first_name || "User";
 
 const canvas = document.getElementById("canvas");
 const ctx = canvas.getContext("2d");
@@ -18,39 +18,39 @@ let img = new Image();
 
 const SCREENS = ["initial-screen", "loading-screen", "empty-screen"];
 
-function handleUploadButton(loading) {
-  if (loading) {
-    document.querySelector(
-      ".initial-screen_upload-button_icon-spinner"
-    ).style.opacity = 1;
-    document.querySelector(
-      ".initial-screen_upload-button_icon-spinner"
-    ).style.visibility = "visible";
-    document.querySelector(".initial-screen_upload-button").disabled = true;
-    document.querySelector(
-      ".empty-screen_upload-button_icon-spinner"
-    ).style.opacity = 1;
-    document.querySelector(
-      ".empty-screen_upload-button_icon-spinner"
-    ).style.visibility = "visible";
-    document.querySelector(".empty-screen_upload-button").disabled = true;
-  } else {
-    document.querySelector(
-      ".initial-screen_upload-button_icon-spinner"
-    ).style.opacity = 0;
-    document.querySelector(
-      ".initial-screen_upload-button_icon-spinner"
-    ).style.visibility = "hidden";
-    document.querySelector(".initial-screen_upload-button").disabled = false;
-    document.querySelector(
-      ".empty-screen_upload-button_icon-spinner"
-    ).style.opacity = 0;
-    document.querySelector(
-      ".empty-screen_upload-button_icon-spinner"
-    ).style.visibility = "hidden";
-    document.querySelector(".empty-screen_upload-button").disabled = false;
-  }
-}
+// function handleUploadButton(loading) {
+//   if (loading) {
+//     document.querySelector(
+//       ".initial-screen_upload-button_icon-spinner"
+//     ).style.opacity = 1;
+//     document.querySelector(
+//       ".initial-screen_upload-button_icon-spinner"
+//     ).style.visibility = "visible";
+//     document.querySelector(".initial-screen_upload-button").disabled = true;
+//     document.querySelector(
+//       ".empty-screen_upload-button_icon-spinner"
+//     ).style.opacity = 1;
+//     document.querySelector(
+//       ".empty-screen_upload-button_icon-spinner"
+//     ).style.visibility = "visible";
+//     document.querySelector(".empty-screen_upload-button").disabled = true;
+//   } else {
+//     document.querySelector(
+//       ".initial-screen_upload-button_icon-spinner"
+//     ).style.opacity = 0;
+//     document.querySelector(
+//       ".initial-screen_upload-button_icon-spinner"
+//     ).style.visibility = "hidden";
+//     document.querySelector(".initial-screen_upload-button").disabled = false;
+//     document.querySelector(
+//       ".empty-screen_upload-button_icon-spinner"
+//     ).style.opacity = 0;
+//     document.querySelector(
+//       ".empty-screen_upload-button_icon-spinner"
+//     ).style.visibility = "hidden";
+//     document.querySelector(".empty-screen_upload-button").disabled = false;
+//   }
+// }
 
 function setActiveScreen(activeScreen) {
   SCREENS.forEach((screen) => {
@@ -269,7 +269,12 @@ pixelSizeInput.addEventListener("input", () => {
 function uploadImage(event) {
   const file = event.target.files[0];
   if (file) {
-    handleUploadButton(true);
+    document
+      .querySelector(".initial-screen_upload-button_icon-spinner")
+      .classList.add("active-spinner");
+    document
+      .querySelector(".empty-screen_upload-button_icon-spinner")
+      .classList.remove("active-spinner");
     const reader = new FileReader();
     reader.onload = function (e) {
       img.src = e.target.result;
@@ -278,7 +283,12 @@ function uploadImage(event) {
         drawImageToCanvas(img);
         pixelateWithGrid();
         setActiveScreen("initial-screen");
-        handleUploadButton(false);
+        document
+          .querySelector(".initial-screen_upload-button_icon-spinner")
+          .classList.remove("active-spinner");
+        document
+          .querySelector(".empty-screen_upload-button_icon-spinner")
+          .classList.remove("active-spinner");
       };
     };
     reader.readAsDataURL(file);

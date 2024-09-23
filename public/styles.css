@@ -194,6 +194,11 @@ body {
   transition: 0.2s;
 }
 
+.active-spinner {
+  opacity: 1;
+  visibility: visible;
+}
+
 /* Common */
 
 #pixel-size::-webkit-slider-thumb {
