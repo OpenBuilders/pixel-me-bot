@@ -1,129 +1,281 @@
-/* Основные стили для всего документа */
-body {
-    height: 100vh;
-    width: 100%;
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    color: #ffffff;
-    background: #171f2a;
-    font-family: 'ProductSans', sans-serif;
-    overflow: hidden; /* Запрещаем и вертикальную, и горизонтальную прокрутку */
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    padding-bottom: 180px; /* Отступ под нижний контейнер */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Monocraft";
 }
 
-/* Стили для контейнера с Canvas */
-.profile-photo-container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin-bottom: 18px;
+body {
+  height: 100vh;
+  width: 100%;
+  color: #ffffff;
+  background: #171f2a;
+  overflow: hidden;
+  position: relative;
+}
+
+/* Loading screen */
+
+.loading-screen {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  opacity: 0;
+  visibility: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  transition: 0.2s;
+}
+
+.loading-screen_image {
+  height: 64px;
+  width: 64px;
+  min-width: 64px;
+}
+
+.loading-screen_text {
+  color: #fff;
+  margin-top: 18px;
+  width: 250px;
+  text-align: center;
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 24px;
+}
+
+/* Upload screen */
+
+.empty-screen {
+  width: 100%;
+  height: 100vh;
+  position: absolute;
+  top: 0;
+  left: 0;
+  opacity: 0;
+  visibility: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  transition: 0.2s;
+}
+
+.empty-screen_text {
+  color: #fff;
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 24px;
+  width: 250px;
+  text-align: center;
+  margin: 0 auto;
+}
+
+.empty-screen_upload-button {
+  position: absolute;
+  left: 16px;
+  right: 16px;
+  bottom: 24px;
+}
+
+/* Initial screen */
+
+.initial-screen {
+  width: 100%;
+  height: 100vh;
+  position: absolute;
+  top: 0;
+  left: 0;
+  opacity: 0;
+  visibility: hidden;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  transition: 0.2s;
+  padding: 30px 16px 24px;
+}
+
+.initial-screen_image {
+  margin: 0 auto;
+  display: flex;
+  justify-content: center;
+  min-height: 10%;
+  max-width: 100%;
+  border-radius: 12px;
+  overflow: hidden;
 }
 
 #canvas {
-    width: 100%;
-    max-width: 350px; /* Ограничьте максимальную ширину */
-    aspect-ratio: 1 / 1; /* Соотношение сторон 1:1 для круглой формы */
-    border-radius: 50%;
-    object-fit: cover;
+  height: 100%;
+  object-fit: contain;
+  border-radius: 12px;
+  overflow: hidden;
 }
 
+.initial-screen_upload-button {
+  position: relative;
+  width: 100%;
+  margin-top: 40px;
+}
 
-/* Стили для слайдера */
+/* #screen-initial-uploader {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  opacity: 0;
+  cursor: pointer;
+  z-index: 1;
+} */
+
+.initial-screen_range-text {
+  margin-top: 30px;
+  color: #8694a1;
+  font-size: 15px;
+  font-weight: 500;
+}
+
 .slider-container {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin-top: 2px;
-    gap: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 2px;
+  gap: 10px;
 }
 
 #pixel-size {
-    width: 250px; /* Увеличенная длина слайдера */
-    -webkit-appearance: none;
-    appearance: none;
-    background: #314156;
-    height: 15px; /* Увеличенная высота слайдера */
-    border-radius: 6px; /* Немного более округлые края */
-    cursor: pointer;
-    outline: none;
+  margin-top: 20px;
+  width: 100%;
+  -webkit-appearance: none;
+  appearance: none;
+  background: #314156;
+  height: 15px;
+  border-radius: 6px;
+  cursor: pointer;
+  outline: none;
 }
 
+.initial-screen_buttons {
+  margin-top: 80px;
+  display: flex;
+  gap: 16px;
+  flex-direction: column;
+}
+
+.screen-initial-action-button {
+  width: 100%;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.initial-screen_share-button_icon-spinner,
+.initial-screen_upload-button_icon-spinner,
+.empty-screen_upload-button_icon-spinner,
+.initial-screen_save-button_icon-spinner {
+  opacity: 0;
+  visibility: hidden;
+  position: absolute;
+  right: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  animation: rotating 0.7s linear infinite;
+  border-radius: 50%;
+  height: 24px;
+  width: 24px;
+  min-width: 24px;
+  transition: 0.2s;
+}
+
+/* Common */
+
 #pixel-size::-webkit-slider-thumb {
-    -webkit-appearance: none;
-    appearance: none;
-    width: 26px; /* Увеличенный размер ползунка */
-    height: 26px;
-    background-color: #248bda;
-    border-radius: 50%;
-    cursor: pointer;
-    border: none;
+  -webkit-appearance: none;
+  appearance: none;
+  width: 26px;
+  height: 26px;
+  background-color: #248bda;
+  border-radius: 50%;
+  cursor: pointer;
+  border: none;
 }
 
 #pixel-size::-moz-range-thumb {
-    width: 24px; /* Увеличенный размер ползунка */
-    height: 24px;
-    background-color: #248bda;
-    border-radius: 50%;
-    cursor: pointer;
-    border: none;
+  width: 24px;
+  height: 24px;
+  background-color: #248bda;
+  border-radius: 50%;
+  cursor: pointer;
+  border: none;
 }
 
-
-/* Нижний контейнер */
-.footer {
-    width: 100%;
-    background-color: #0;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    padding: 20px;
-    position: fixed;
-    bottom: 0;
+.active-screen {
+  opacity: 1;
+  position: relative;
+  visibility: visible;
 }
 
-.footer-content {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 15px;
-    width: 100%;
-    max-width: 300px;
+/* Buttons */
+
+.button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  height: 54px;
+  border-radius: 12px;
+  border: none;
+  font-size: 14px;
+  font-weight: 500;
+  outline: none;
+  cursor: pointer;
 }
 
-/* Стиль кнопок Upload и Get */
-.custom-label, .custom-button {
-    width: 100%;
-    height: 50px;
-    background-color: #314156;
-    color: #8794a1;
-    border: none;
-    border-radius: 8px;
-    font-size: 1rem;
-    font-weight: 600;
-    cursor: pointer;
-    text-align: center;
-    line-height: 50px;
+.secondary {
+  background-color: #202a38;
+  color: #ffffff;
 }
 
-#upload-image {
-    display: none;
+.primary {
+  background-color: #1f75b7;
+  color: #ffffff;
 }
 
-.custom-button {
-    background-color: #248bda;
-    color: #ffffff;
+.success {
+  color: #000000;
+  background-color: #ffffff;
 }
 
-.custom-label:hover {
-    background-color: #293648;
+#empty-uploader,
+#initial-uploader {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  opacity: 0;
+  cursor: pointer;
+  z-index: 1;
 }
 
-.custom-button:hover {
-    background-color: #207cc2;
+.button-icon {
+  height: 14px;
+  width: 14px;
+  min-width: 14px;
 }
 
+@keyframes rotating {
+  from {
+    transform: translateY(-50%) rotate(0deg);
+  }
+  to {
+    transform: translateY(-50%) rotate(360deg);
+  }
+}

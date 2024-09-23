@@ -1,35 +1,88 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"
+    />
     <title>Telegram WebApp</title>
-    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="fonts.css" />
+    <link rel="stylesheet" href="styles.css" />
     <script src="https://telegram.org/js/telegram-web-app.js"></script>
-</head>
-<body>
-    <!-- Canvas для отображения фото профиля -->
-    <div class="profile-photo-container">
+  </head>
+  <body>
+    <section class="loading-screen">
+      <img class="loading-screen_image" src="./assets/loader.gif" />
+      <p class="loading-screen_text"></p>
+    </section>
+
+    <section class="empty-screen">
+      <p class="empty-screen_text"></p>
+      <button class="empty-screen_upload-button button secondary">
+        <img class="button-icon" src="./assets/upload.png" />
+        <input type="file" id="empty-uploader" accept="image/*" />
+        <span class="empty-screen_upload-button_text"></span>
+        <img
+          class="empty-screen_upload-button_icon-spinner"
+          src="./assets/spinner.png"
+        />
+      </button>
+    </section>
+
+    <section class="initial-screen">
+      <div class="initial-screen_image">
         <canvas id="canvas"></canvas>
-    </div>
+      </div>
 
-    <!-- Слайдер под изображением для выбора размера пикселя -->
-	<div class="slider-container">
-	    <input type="range" id="pixel-size" min="3" max="35" value="10" step="1">
-	    <span id="pixel-size-value" style="display: none;">10</span>
-	</div>
+      <div class="initial-screen_controls">
+        <button class="initial-screen_upload-button button secondary">
+          <img class="button-icon" src="./assets/upload.png" />
+          <input type="file" id="initial-uploader" accept="image/*" />
+          <span class="initial-screen_upload-button_text"></span>
+          <img
+            class="initial-screen_upload-button_icon-spinner"
+            src="./assets/spinner.png"
+          />
+        </button>
 
-
-    <!-- Нижний контейнер с кнопками -->
-    <div class="footer">
-        <div class="footer-content">
-            <label for="upload-image" class="custom-label">Upload photo</label>
-            <input type="file" id="upload-image" accept="image/*">
-            <button id="send-image" class="custom-button">Get</button>
+        <p class="initial-screen_range-text"></p>
+        <div class="slider-container">
+          <input
+            type="range"
+            id="pixel-size"
+            min="3"
+            max="35"
+            value="10"
+            step="1"
+          />
+          <span id="pixel-size-value" style="display: none">10</span>
         </div>
-    </div>
 
-    <script src="app.js"></script>
-</body>
+        <div class="initial-screen_buttons">
+          <button
+            id="share-button"
+            class="initial-screen_share-button button secondary"
+          ></button>
+          <button
+            id="save-button"
+            class="initial-screen_save-button button primary"
+          >
+            <img
+              class="initial-screen_save-button_icon-spinner"
+              src="./assets/spinner.png"
+            />
+            <span class="initial-screen_save-button_text"></span>
+            <img
+              class="initial-screen_save-button_icon-spinner"
+              src="./assets/spinner.png"
+            />
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <script src="locales.js" type="module"></script>
+    <script src="app.js" type="module"></script>
+  </body>
 </html>
-
