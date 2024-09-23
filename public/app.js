@@ -344,11 +344,12 @@ async function sendImageToServer() {
 }
 
 function shareStory() {
-  if (window.Telegram.WebApp.version < "7.8") {
+  const webApp = window.Telegram.WebApp;
+  if (webApp.version < "7.8") {
     return null;
   }
 
-  window.Telegram.WebApp.shareToStory(img, {
+  webApp.shareToStory(img, {
     text: getLocaleText().storyMessage,
     widget_link: {
       url: BOT_URL,
