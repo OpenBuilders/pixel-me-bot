@@ -25,7 +25,7 @@ const LOCALES = {
     saveButtonLoading: "Saving...",
     saveButtonWaiting: "Need to wait for a while ❤️",
     saveButtonError: "Error, try again later",
-    shareButton: "Share in your stories",
+    shareButton: "Share in my stories",
     storyMessage: "Pixelaize your image!",
     storyLinkText: "Play @NotPixel in Notcoin",
   },
