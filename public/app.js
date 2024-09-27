@@ -249,12 +249,11 @@ document
   });
 
 function shareStory() {
-  const webApp = window.Telegram.WebApp;
-  if (webApp.version < "7.8") {
+  if (Telegram.WebApp.version < "7.8") {
     return null;
   }
 
-  webApp.shareToStory(img, {
+  Telegram.WebApp.shareToStory(img, {
     text: getLocalesTexts().storyMessage,
     widget_link: {
       url: "https://t.me/notpixel_me_bot",
@@ -332,6 +331,7 @@ document.getElementById("share-button").addEventListener("click", shareStory);
 
 async function main() {
   try {
+    Telegram.WebApp.setHeaderColor("#171f2a");
     setLocalesTexts();
     setActiveScreen("loading-screen");
     await loadProfilePhoto();
