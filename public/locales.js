@@ -13,6 +13,9 @@ const LOCALES = {
     shareButton: "Пошерить в сторис",
     storyMessage: "Пикселизируй свое изображение!",
     storyLinkText: "Играй @NotPixel в Ноткоин",
+    downloadTitle: "Картинка скачивается",
+    downloadDescription: "Но если нет, можете её поторопить",
+    downloadButton: "Давай, картинка!",
   },
   en: {
     loadingScreenText: "Just a moment, the pic is turning into pixels",
@@ -25,9 +28,12 @@ const LOCALES = {
     saveButtonLoading: "Saving...",
     saveButtonWaiting: "Need to wait for a while ❤️",
     saveButtonError: "Error, try again later",
-    shareButton: "Share in your stories",
+    shareButton: "Share in my stories",
     storyMessage: "Pixelaize your image!",
     storyLinkText: "Play @NotPixel in Notcoin",
+    downloadTitle: "Pic is downloading",
+    downloadDescription: "But if no, you can hurry it up",
+    downloadButton: "Go, pic, go!",
   },
 };
 
@@ -59,3 +65,12 @@ export const setLocalesTexts = () => {
 };
 
 export const getLocalesTexts = () => appLanguage;
+
+export const setDownloadPageLocales = () => {
+  document.querySelector(".download-screen_title").innerHTML =
+    appLanguage.downloadTitle;
+  document.querySelector(".download-screen_text").innerHTML =
+    appLanguage.downloadDescription;
+  document.querySelector(".download-screen_download-button").innerHTML =
+    appLanguage.downloadButton;
+};
