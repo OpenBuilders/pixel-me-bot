@@ -11,6 +11,11 @@ function setImage() {
   }
 }
 
+function openInNewTab() {
+  const imgSrc = urlParams.get("src");
+  window.open(imgSrc, '_blank');
+}
+
 async function downloadImage() {
   try {
     const urlParams = new URLSearchParams(window.location.search);
@@ -63,6 +68,6 @@ async function main() {
 
 document
   .querySelector(".download-screen_download-button")
-  .addEventListener("click", async () => await downloadImage());
+  .addEventListener("click", async () => await openInNewTab());
 
 main();
