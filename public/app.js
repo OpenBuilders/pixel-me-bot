@@ -254,7 +254,7 @@ function shareStory(src) {
       text: `Ready for Pixel Season? @notpixel #notpixel`,
       widget_link: {
         url: "https://t.me/notpixime_bot",
-        name: getLocalesTexts().storyLinkText,
+        name: "Pixel Season is ON! @notpixel",
       },
     });
   }
