@@ -249,19 +249,15 @@ document
   });
 
 function shareStory() {
-  console.log(window.Telegram.WebApp.version);
-  console.log(Telegram.WebApp.version);
-  //   if (!Telegram.WebApp.shareToStory) {
-  //     return null;
-  //   }
-
-  Telegram.WebApp.shareToStory(img, {
-    text: getLocalesTexts().storyMessage,
-    widget_link: {
-      url: "https://t.me/notpixel_me_bot",
-      name: getLocalesTexts().storyLinkText,
-    },
-  });
+  if (img.src) {
+    Telegram.WebApp.shareToStory(img.src, {
+      text: getLocalesTexts().storyMessage,
+      widget_link: {
+        url: "https://t.me/notpixel_me_bot",
+        name: getLocalesTexts().storyLinkText,
+      },
+    });
+  }
 }
 const initData = Telegram.WebApp.initData;
 // const initDataUnsafe = Telegram.WebApp.initDataUnsafe || {};
@@ -313,17 +309,6 @@ async function uploadImageToServer() {
   }, "image/jpeg");
 }
 
-document
-  .getElementById("empty-uploader")
-  .addEventListener("change", (event) => {
-    uploadImage(event);
-  });
-document
-  .getElementById("initial-uploader")
-  .addEventListener("change", (event) => {
-    uploadImage(event);
-  });
-
 // Обработка нажатия на кнопку отправки
 document
   .getElementById("save-button")
@@ -335,6 +320,13 @@ async function main() {
   try {
     Telegram.WebApp.setHeaderColor("#171f2a");
     setLocalesTexts();
+    if (
+      Number(Telegram.WebApp.version) < 7.8 &&
+      Telegram.WebApp.version.length === 3
+    ) {
+      document.getElementById("share-button").style.visibility = "hidden";
+      document.getElementById("share-button").style.opacity = 0;
+    }
     setActiveScreen("loading-screen");
     await loadProfilePhoto();
     setActiveScreen("initial-screen");
