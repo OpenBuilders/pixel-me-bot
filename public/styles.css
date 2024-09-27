@@ -57,7 +57,8 @@ body {
 
 .download-screen_download-button {
   margin-top: 24px;
-  max-width: 450px;
+  max-width: 500px;
+  min-width: 320px;
 }
 
 /* Loading screen */
