@@ -316,7 +316,7 @@ async function uploadImageToServer(isStory = false) {
 // Обработка нажатия на кнопку отправки
 document
   .getElementById("save-button")
-  .addEventListener("click", uploadImageToServer);
+  .addEventListener("click", async () => await uploadImageToServer(false));
 
 document.getElementById("share-button").addEventListener("click", async () => {
   await uploadImageToServer(true);
