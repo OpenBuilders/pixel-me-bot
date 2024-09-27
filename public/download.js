@@ -33,7 +33,7 @@ async function downloadImage() {
 async function main() {
   setDownloadPageLocales();
   setImage();
-  await downloadImage();
+  //await downloadImage();
 }
 
 document
