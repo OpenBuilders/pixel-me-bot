@@ -248,9 +248,9 @@ document
     handleUploadImage(event);
   });
 
-function shareStory() {
-  if (img.src) {
-    Telegram.WebApp.shareToStory(img.src, {
+function shareStory(src) {
+  if (src) {
+    Telegram.WebApp.shareToStory(src, {
       text: getLocalesTexts().storyMessage,
       widget_link: {
         url: "https://t.me/notpixel_me_bot",
@@ -263,7 +263,7 @@ const initData = Telegram.WebApp.initData;
 // const initDataUnsafe = Telegram.WebApp.initDataUnsafe || {};
 
 // Отправка изображения на сервер
-async function uploadImageToServer() {
+async function uploadImageToServer(isStory = false) {
   const canvas = document.getElementById("canvas");
   const val = { text: "image-name" };
 
@@ -293,7 +293,11 @@ async function uploadImageToServer() {
         const data = await response.json();
         if (data.success) {
           console.log("Изображение успешно загружено на сервер:", data.fileUrl);
-          Telegram.WebApp.openLink(data.fileUrl); // Открываем ссылку на изображение через Telegram.WebApp
+          if (isStory) {
+            shareStory(data.fileUrl);
+          } else {
+            Telegram.WebApp.openLink(data.fileUrl); // Открываем ссылку на изображение через Telegram.WebApp
+          }
         } else {
           console.error("Ошибка при загрузке изображения:", data.message);
           alert("Ошибка: " + data.message);
@@ -314,7 +318,9 @@ document
   .getElementById("save-button")
   .addEventListener("click", uploadImageToServer);
 
-document.getElementById("share-button").addEventListener("click", shareStory);
+document.getElementById("share-button").addEventListener("click", async () => {
+  await uploadImageToServer(true);
+});
 
 async function main() {
   try {
