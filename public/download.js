@@ -24,13 +24,6 @@ async function downloadImage() {
     link.download = "Pixi image.jpg";
     document.body.appendChild(link);
     link.click();
-    document.body.removeChild(link);
-    document.querySelector(".download-screen_download-button").disabled = true;
-    document.querySelector(".download-screen_download-button").innerHTML =
-      getLocalesTexts().downloadButtonDone;
-    document
-      .querySelector(".download-screen_download-button")
-      .classList.add("success");
   } catch (error) {
     console.error("Error downloading image:");
   }

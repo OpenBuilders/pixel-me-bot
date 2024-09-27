@@ -16,7 +16,6 @@ const LOCALES = {
     downloadTitle: "Картинка скачивается",
     downloadDescription: "Но если нет, можете её поторопить",
     downloadButton: "Давай, картинка!",
-    downloadButtonDone: "Картинка загружена",
   },
   en: {
     loadingScreenText: "Just a moment, the pic is turning into pixels",
@@ -35,7 +34,6 @@ const LOCALES = {
     downloadTitle: "Pic is downloading",
     downloadDescription: "But if no, you can hurry it up",
     downloadButton: "Go, pic, go!",
-    downloadButtonDone: "Pic downloaded",
   },
 };
 

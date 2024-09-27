@@ -32,7 +32,7 @@ body {
   display: flex;
   justify-content: center;
   max-height: 300px;
-  max-width: 100%;
+  max-width: 400px;
   border-radius: 12px;
   overflow: hidden;
 }
