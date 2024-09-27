@@ -296,8 +296,9 @@ async function uploadImageToServer(isStory = false) {
           if (isStory) {
             shareStory(data.fileUrl);
           } else {
+            // TODO: Заменить ссылку тут
             Telegram.WebApp.openLink(
-              `https://notpixel_me_bot/download?src=${data.fileUrl}`
+              `https://notpixel_me_bot/public/download?src=${data.fileUrl}`
             ); // Открываем ссылку на изображение через Telegram.WebApp
           }
         } else {
