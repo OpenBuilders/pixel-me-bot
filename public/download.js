@@ -12,6 +12,7 @@ function setImage() {
 }
 
 function openInNewTab() {
+  const urlParams = new URLSearchParams(window.location.search);
   const imgSrc = urlParams.get("src");
   window.open(imgSrc, '_blank');
 }
