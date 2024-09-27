@@ -46,11 +46,6 @@ router.get("/", (req, res) => {
   res.sendFile(path.join(__dirname, "public", "index.html"));
 });
 
-// Страница загрузки
-router.get("/download", (req, res) => {
-  res.sendFile(path.join(__dirname, "public", "download.html"));
-});
-
 // Маршрут для загрузки фото профиля из CDN
 router.get("/showProfilePhoto", async (req, res) => {
   const userId = req.query.userId;

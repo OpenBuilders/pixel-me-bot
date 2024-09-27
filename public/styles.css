@@ -14,6 +14,52 @@ body {
   position: relative;
 }
 
+/* Download screen */
+
+.download-screen {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  transition: 0.2s;
+  padding: 30px;
+}
+
+.download-screen_image {
+  margin: 0 auto;
+  display: flex;
+  justify-content: center;
+  max-height: 300px;
+  max-width: 100%;
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+.download-screen_title {
+  margin-top: 24px;
+  color: #fff;
+  text-align: center;
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 24px;
+}
+
+.download-screen_text {
+  margin-top: 8px;
+  color: #526680;
+  text-align: center;
+  font-size: 13px;
+  font-weight: 500;
+  line-height: 24px;
+}
+
+.download-screen_download-button {
+  margin-top: 24px;
+  width: 100%;
+}
+
 /* Loading screen */
 
 .loading-screen {
@@ -122,17 +168,6 @@ body {
   width: 100%;
   margin-top: 40px;
 }
-
-/* #screen-initial-uploader {
-    position: absolute;
-    top: 0;
-    left: 0;
-    height: 100%;
-    width: 100%;
-    opacity: 0;
-    cursor: pointer;
-    z-index: 1;
-  } */
 
 .initial-screen_range-text {
   margin-top: 30px;

@@ -5,7 +5,7 @@ Telegram.WebApp.ready();
 window.Telegram.WebApp.expand();
 window.Telegram.WebApp.disableVerticalSwipes();
 
-const userId = Telegram.WebApp.initDataUnsafe.user.id;
+// const userId = Telegram.WebApp.initDataUnsafe.user.id;
 // const firstName = Telegram.WebApp.initDataUnsafe.user.first_name || "User";
 
 const canvas = document.getElementById("canvas");
@@ -296,7 +296,9 @@ async function uploadImageToServer(isStory = false) {
           if (isStory) {
             shareStory(data.fileUrl);
           } else {
-            Telegram.WebApp.openLink(data.fileUrl); // Открываем ссылку на изображение через Telegram.WebApp
+            Telegram.WebApp.openLink(
+              `https://notpixel_me_bot/download?src=${data.fileUrl}`
+            ); // Открываем ссылку на изображение через Telegram.WebApp
           }
         } else {
           console.error("Ошибка при загрузке изображения:", data.message);
