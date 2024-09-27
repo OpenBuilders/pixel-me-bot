@@ -253,7 +253,7 @@ function shareStory(src) {
     Telegram.WebApp.shareToStory(src, {
       text: getLocalesTexts().storyMessage,
       widget_link: {
-        url: "https://t.me/notpixel_me_bot/pixify?startapp",
+        url: "https://t.me/notpixel_me_bot/pixefy?startapp",
         name: getLocalesTexts().storyLinkText,
       },
     });
