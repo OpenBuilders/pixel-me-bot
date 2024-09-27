@@ -24,6 +24,7 @@ async function downloadImage() {
     link.download = "Pixi image.jpg";
     document.body.appendChild(link);
     link.click();
+    document.body.removeChild(link);
   } catch (error) {
     console.error("Error downloading image:");
   }
