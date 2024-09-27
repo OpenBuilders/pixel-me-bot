@@ -253,7 +253,7 @@ function shareStory(src) {
     Telegram.WebApp.shareToStory(src, {
       text: `Ready for Pixel Season? @notpixel`,
       widget_link: {
-        url: "https://t.me/notpixel_me_bot",
+        url: "https://t.me/notpixime_bot",
         name: getLocalesTexts().storyLinkText,
       },
     });
