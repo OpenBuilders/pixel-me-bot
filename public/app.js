@@ -5,7 +5,7 @@ Telegram.WebApp.ready();
 window.Telegram.WebApp.expand();
 window.Telegram.WebApp.disableVerticalSwipes();
 
-// const userId = Telegram.WebApp.initDataUnsafe.user.id;
+const userId = Telegram.WebApp.initDataUnsafe.user.id;
 // const firstName = Telegram.WebApp.initDataUnsafe.user.first_name || "User";
 
 const canvas = document.getElementById("canvas");
