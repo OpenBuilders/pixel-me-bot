@@ -249,9 +249,11 @@ document
   });
 
 function shareStory() {
-  if (Telegram.WebApp.version < "7.8") {
-    return null;
-  }
+  console.log(window.Telegram.WebApp.version);
+  console.log(Telegram.WebApp.version);
+  //   if (!Telegram.WebApp.shareToStory) {
+  //     return null;
+  //   }
 
   Telegram.WebApp.shareToStory(img, {
     text: getLocalesTexts().storyMessage,
