@@ -21,7 +21,7 @@ async function downloadImage() {
 
     const link = document.createElement("a");
     link.href = imageURL;
-    link.download = "Pixi image.jpg";
+    link.download = `pixi_avatar_${new Date().getTime()}.jpg`;
     document.body.appendChild(link);
     link.click();
     document.body.removeChild(link);
