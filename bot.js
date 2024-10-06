@@ -66,9 +66,7 @@ bot.onText(/\/start/, async (msg) => {
     } else {
       console.log(`Пользователь ${chatId} не имеет фото профиля.`);
     }
-
     try {
-      // Отправляем сообщение с кнопкой "Start App"
       await bot.sendMessage(
         chatId,
         "Hello, friend! Head over to the miniapp and create your pixel avatar.",
@@ -88,12 +86,17 @@ bot.onText(/\/start/, async (msg) => {
     } catch (error) {
       console.error(error);
     }
+    // Отправляем сообщение с кнопкой "Start App"
   } catch (error) {
     console.error("Ошибка при обработке команды /start:", error);
-    await bot.sendMessage(
-      chatId,
-      "Произошла ошибка при обработке вашего запроса."
-    );
+    try {
+      await bot.sendMessage(
+        chatId,
+        "Произошла ошибка при обработке вашего запроса."
+      );
+    } catch (error) {
+      console.error(error);
+    }
   }
 });
 
